@@ -1,0 +1,20 @@
+{
+  "indexes": [],
+  "fieldOverrides": [
+    {
+      "collectionGroup": "submissions",
+      "fieldPath": "utr",
+      "indexes": [{ "order": "ASCENDING", "queryScope": "COLLECTION" }]
+    },
+    {
+      "collectionGroup": "submissions",
+      "fieldPath": "mobile",
+      "indexes": [{ "order": "ASCENDING", "queryScope": "COLLECTION" }]
+    },
+    {
+      "collectionGroup": "submissions",
+      "fieldPath": "leaderEmail",
+      "indexes": [{ "order": "ASCENDING", "queryScope": "COLLECTION" }]
+    }
+  ]
+}

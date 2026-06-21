@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROBOCHIPX 2026 | 24-Hour Robotics & VLSI Innovation Challenge</title>
+  <meta name="description" content="Join ROBOCHIPX 2026 at Rajalakshmi Institute of Technology, Chennai. A premium 24-hour intercollege Robotics and VLSI innovation challenge. Dive beyond limits.">
+  <link rel="stylesheet" href="styles.css">
+  <!-- FontAwesome for futuristic icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- Space Particle Canvas Background -->
+  <canvas id="space-canvas" aria-hidden="true"></canvas>
+  <div class="circuit-overlay" aria-hidden="true"></div>
+
+  <!-- Header & Navigation -->
+  <header>
+    <nav class="navbar" aria-label="Main navigation">
+      <a href="#" class="logo" aria-label="ROBOCHIPX 2026 Home">
+        <i class="fa-solid fa-microchip" aria-hidden="true"></i> ROBO<span>CHIPX '26</span>
+      </a>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#tracks">Tracks</a></li>
+        <li><a href="#prizes">Prizes</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#venue">Venue</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+      <a href="registration.html" class="btn btn-secondary">Register Now</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" aria-label="Hero">
+    <div class="grid-bg" aria-hidden="true"></div>
+    <!-- Floating Space Elements -->
+    <div class="space-element planet-cyan" aria-hidden="true"></div>
+    <div class="space-element planet-purple" aria-hidden="true"></div>
+    
+    <div class="container hero-content">
+      <div class="hero-subtitle">Rajalakshmi Institute of Technology</div>
+      <h1 class="hero-title">ROBOCHIPX 2026</h1>
+      <div class="hero-tagline">Dive Beyond Limits</div>
+      <p class="hero-desc">
+        A premium 24-hour intercollege Robotics and Chip Design innovation challenge. Construct the robots of tomorrow and design the next-gen microchips that will power our universe.
+      </p>
+      
+      <div class="hero-meta">
+        <div class="meta-item">
+          <i class="fa-solid fa-calendar-days meta-icon" aria-hidden="true"></i>
+          <span class="meta-label">9–10 July 2026</span>
+          <span class="meta-val">24-Hour Hackathon</span>
+        </div>
+        <div class="meta-item">
+          <i class="fa-solid fa-location-dot meta-icon" aria-hidden="true"></i>
+          <span class="meta-label">RIT, Chennai</span>
+          <span class="meta-val">Green Building</span>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="registration.html" class="btn btn-primary">Register Now</a>
+        <a href="#tracks" class="btn btn-secondary">Explore Tracks</a>
+      </div>
+
+      <!-- Countdown -->
+      <div class="countdown-container" aria-label="Countdown to event">
+        <div class="countdown-box">
+          <div class="countdown-num" id="days">00</div>
+          <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-num" id="hours">00</div>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-num" id="minutes">00</div>
+          <div class="countdown-label">Mins</div>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-num" id="seconds">00</div>
+          <div class="countdown-label">Secs</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="reveal" aria-labelledby="about-title">
+    <div class="container">
+      <h2 class="section-title" id="about-title">About ROBOCHIPX</h2>
+      <div class="about-grid">
+        <div class="glass-panel">
+          <h3>Empowering Future Tech Innovators</h3>
+          <p style="margin-top: 1rem; color: var(--text-secondary);">
+            ROBOCHIPX 2026 is an intense 24-hour innovation incubator that bridges the gap between hardware architecture, robotic design, and VLSI circuit systems. We welcome students from all engineering backgrounds to push boundaries, collaborate, and engineer solutions that matter.
+          </p>
+          <p style="margin-top: 1rem; color: var(--text-secondary);">
+            Whether you are specialized in hardware descriptive languages (HDLs), embedded systems, or autonomous path planning, you will find a home and high-stakes competition right here.
+          </p>
+        </div>
+        <div class="about-features">
+          <div class="about-feat-card">
+            <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+            <h4>24H Action</h4>
+            <p>Non-stop coding, routing, modeling, and real-time hardware debugging.</p>
+          </div>
+          <div class="about-feat-card">
+            <i class="fa-solid fa-microchip" aria-hidden="true"></i>
+            <h4>Silicon Forge</h4>
+            <p>Design cutting-edge architectures using advanced simulation suites.</p>
+          </div>
+          <div class="about-feat-card">
+            <i class="fa-solid fa-robot" aria-hidden="true"></i>
+            <h4>Robotic Arenas</h4>
+            <p>Hands-on robotics labs for prototyping, testing, and system integration.</p>
+          </div>
+          <div class="about-feat-card">
+            <i class="fa-solid fa-trophy" aria-hidden="true"></i>
+            <h4>Top Mentors</h4>
+            <p>Industry-certified jury members from silicon developers and robotics firms.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Event Highlights -->
+  <section id="highlights" class="reveal" aria-labelledby="highlights-title">
+    <div class="container">
+      <h2 class="section-title" id="highlights-title">Event Highlights</h2>
+      <div class="highlights-grid">
+        <div class="glass-panel highlight-card">
+          <div class="highlight-icon"><i class="fa-solid fa-network-wired" aria-hidden="true"></i></div>
+          <h3 class="highlight-title">Tech Ecosystem</h3>
+          <p class="highlight-desc">Access advanced robotics hardware, development platforms, and professional-grade tools.</p>
+        </div>
+        <div class="glass-panel highlight-card">
+          <div class="highlight-icon"><i class="fa-solid fa-users" aria-hidden="true"></i></div>
+          <h3 class="highlight-title">Exclusive Networking </h3>
+          <p class="highlight-desc">Collaborate with exceptional innovators, researchers, and future industry leaders.</p>
+        </div>
+        <div class="glass-panel highlight-card">
+          <div class="highlight-icon"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></div>
+          <h3 class="highlight-title">Expert Mentoring</h3>
+          <p class="highlight-desc">Present your solutions before accomplished engineers and technology specialists.</p>
+        </div>
+        <div class="glass-panel highlight-card">
+          <div class="highlight-icon"><i class="fa-solid fa-mug-hot" aria-hidden="true"></i></div>
+          <h3 class="highlight-title">Premium Hospitality</h3>
+          <p class="highlight-desc">Enjoy premium hospitality, seamless event execution, and an electrifying atmosphere.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tracks Section -->
+  <section id="tracks" class="reveal" aria-labelledby="tracks-title">
+    <div class="container">
+      <h2 class="section-title" id="tracks-title">Challenge Tracks</h2>
+      <div class="tracks-grid">
+        <!-- Track 1: Robotics -->
+        <div class="glass-panel track-card">
+          <div>
+            <div class="track-header">
+              <h3 class="track-title">Robotics Track</h3>
+              <i class="fa-solid fa-robot track-icon" aria-hidden="true"></i>
+            </div>
+            <p class="track-desc">
+              Build the next generation of intelligent machines. Design autonomous robotic solutions that combine innovation, control systems, and real-time decision-making to conquer dynamic challenges.
+            </p>
+          </div>
+          <div>
+            <div class="track-details">
+              <div class="track-detail-item">
+                <span>Team Size</span>
+                <span>4 Members</span>
+              </div>
+              <div class="track-detail-item">
+                <span>Registration Fee</span>
+                <span>₹300 / Team</span>
+              </div>
+            </div>
+            <a href="registration.html" class="btn btn-primary" style="width: 100%;">Choose Robotics</a>
+          </div>
+        </div>
+        <!-- Track 2: Chip Design -->
+        <div class="glass-panel track-card">
+          <div>
+            <div class="track-header">
+              <h3 class="track-title">Chip Design Track</h3>
+              <i class="fa-solid fa-microchip track-icon" aria-hidden="true"></i>
+            </div>
+            <p class="track-desc">
+              Shape the future of computing through advanced VLSI and digital design. Create optimized architectures that deliver exceptional performance, efficiency, and technological impact.
+            </p>
+          </div>
+          <div>
+            <div class="track-details">
+              <div class="track-detail-item">
+                <span>Team Size</span>
+                <span>4 Members</span>
+              </div>
+              <div class="track-detail-item">
+                <span>Registration Fee</span>
+                <span>₹300 / Team</span>
+              </div>
+            </div>
+            <a href="registration.html" class="btn btn-primary" style="width: 100%;">Choose Chip Design</a>
+          </div>
+        </div>
+        <!-- Track 3: AI -->
+        <div class="glass-panel track-card">
+          <div>
+            <div class="track-header">
+              <h3 class="track-title">AI</h3>
+              <i class="fa-solid fa-brain track-icon" aria-hidden="true"></i>
+            </div>
+            <p class="track-desc">
+              Harness the power of Artificial Intelligence and Machine Learning to solve real-world challenges. Design intelligent systems, develop advanced models, and create AI-driven solutions that push the boundaries of innovation.
+            </p>
+          </div>
+          <div>
+            <div class="track-details">
+              <div class="track-detail-item">
+                <span>Team Size</span>
+                <span>4 Members</span>
+              </div>
+              <div class="track-detail-item">
+                <span>Registration Fee</span>
+                <span>₹300 / Team</span>
+              </div>
+            </div>
+            <a href="registration.html" class="btn btn-primary" style="width: 100%;">Choose AI Track</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prize Pool Section -->
+  <section id="prizes" class="reveal" aria-labelledby="prizes-title">
+    <div class="container prize-section">
+      <h2 class="section-title" id="prizes-title">Prize Pool</h2>
+      <div class="glass-panel prize-box">
+        <div class="prize-title">TOTAL REWARDS VALUE UP TO</div>
+      <div class="prize-amount">₹1,00,000</div>
+        <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto 2rem;">
+          
+        </p>
+        <div class="prize-distribution">
+          <div class="prize-dist-card">
+            <div class="prize-rank">1st Place (Grand Winner)</div>
+            <div class="prize-val">₹xxxxx</div>
+          </div>
+          <div class="prize-dist-card">
+            <div class="prize-rank">2nd Place (Runner Up)</div>
+            <div class="prize-val">₹xxxxx</div>
+          </div>
+          <div class="prize-dist-card">
+            <div class="prize-rank">3rd Place (Special Mention)</div>
+            <div class="prize-val">₹xxxxx</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline & Schedule Section -->
+  <section id="timeline" class="reveal" aria-labelledby="timeline-title">
+    <div class="container">
+      <h2 class="section-title" id="timeline-title">Timeline &amp; Schedule</h2>
+      <div class="timeline-schedule-grid">
+        <!-- Interactive Timeline -->
+        <div>
+          <h3 style="font-family: var(--font-tech); margin-bottom: 2rem; color: var(--accent-cyan);">Milestones</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-date">June 15, 2026</div>
+              <div class="timeline-title">Registration Opens</div>
+              <div class="timeline-desc">Teams secure spots by registering online.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">July 7, 2026</div>
+              <div class="timeline-title">Registration Closes</div>
+              <div class="timeline-desc">Slots are capped once maximum threshold is reached.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">July 9, 2026</div>
+              <div class="timeline-title">Hackathon Launch</div>
+              <div class="timeline-desc">Grand launch and prompt release at RIT campus.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">July 10, 2026</div>
+              <div class="timeline-title">Evaluation &amp; Awards</div>
+              <div class="timeline-desc">Showcase project designs and receive prizes.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Schedule Accordions -->
+        <div>
+          <h3 style="font-family: var(--font-tech); margin-bottom: 2rem; color: var(--accent-cyan);">Detailed Schedule</h3>
+          <div class="schedule-container">
+            <div class="schedule-card">
+              <div class="schedule-header" role="button" tabindex="0" aria-expanded="false">
+                <div class="schedule-time">08:30 AM (Day 1)</div>
+                <div class="schedule-title">Reporting &amp; Registration Verification</div>
+                <i class="fa-solid fa-chevron-down schedule-icon" aria-hidden="true"></i>
+              </div>
+              <div class="schedule-content" role="region">
+                <div class="schedule-details">
+                  Collect your tech kits, ID credentials, food passes, and set up your systems inside the hackathon arena.
+                </div>
+              </div>
+            </div>
+
+            <div class="schedule-card">
+              <div class="schedule-header" role="button" tabindex="0" aria-expanded="false">
+                <div class="schedule-time">10:00 AM</div>
+                <div class="schedule-title">Opening Ceremony &amp; Problem Statements</div>
+                <i class="fa-solid fa-chevron-down schedule-icon" aria-hidden="true"></i>
+              </div>
+              <div class="schedule-content" role="region">
+                <div class="schedule-details">
+                  Inauguration of the event, addresses by technology heads, and release of specialized track prompts.
+                </div>
+              </div>
+            </div>
+
+            <div class="schedule-card">
+              <div class="schedule-header" role="button" tabindex="0" aria-expanded="false">
+                <div class="schedule-time">11:00 AM</div>
+                <div class="schedule-title">Hackathon Begins (Timer Starts)</div>
+                <i class="fa-solid fa-chevron-down schedule-icon" aria-hidden="true"></i>
+              </div>
+              <div class="schedule-content" role="region">
+                <div class="schedule-details">
+                  24-hour innovation clock begins ticking. Work on circuit modeling, HDL verification, and robot prototyping.
+                </div>
+              </div>
+            </div>
+
+            <div class="schedule-card">
+              <div class="schedule-header" role="button" tabindex="0" aria-expanded="false">
+                <div class="schedule-time">02:00 PM</div>
+                <div class="schedule-title">First Mentorship Checkpoint</div>
+                <i class="fa-solid fa-chevron-down schedule-icon" aria-hidden="true"></i>
+              </div>
+              <div class="schedule-content" role="region">
+                <div class="schedule-details">
+                  Showcase design workflows, logic structures, and structural frameworks to expert panels for directional correction.
+                </div>
+              </div>
+            </div>
+
+            <div class="schedule-card">
+              <div class="schedule-header" role="button" tabindex="0" aria-expanded="false">
+                <div class="schedule-time">08:00 PM</div>
+                <div class="schedule-title">Active Nights</div>
+                <i class="fa-solid fa-chevron-down schedule-icon" aria-hidden="true"></i>
+              </div>
+              <div class="schedule-content" role="region">
+                <div class="schedule-details">
+                  Unwind after an intense day of innovation with an electrifying DJ Night.
+                </div>
+              </div>
+            </div>
+
+            <div class="schedule-card">
+              <div class="schedule-header" role="button" tabindex="0" aria-expanded="false">
+                <div class="schedule-time">11:00 AM (Day 2)</div>
+                <div class="schedule-title">Final Mentorship</div>
+                <i class="fa-solid fa-chevron-down schedule-icon" aria-hidden="true"></i>
+              </div>
+              <div class="schedule-content" role="region">
+                <div class="schedule-details">
+                  Code freeze, layout locking, and submission of design files to evaluating boards.
+                </div>
+              </div>
+            </div>
+
+            <div class="schedule-card">
+              <div class="schedule-header" role="button" tabindex="0" aria-expanded="false">
+                <div class="schedule-time">01:00 PM</div>
+                <div class="schedule-title">Closing Ceremony</div>
+                <i class="fa-solid fa-chevron-down schedule-icon" aria-hidden="true"></i>
+              </div>
+              <div class="schedule-content" role="region">
+                <div class="schedule-details">
+                  Join us as we celebrate innovation, recognize outstanding teams, and conclude ROBOCHIPX 2026 with awards, memories, and achievements.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Venue Section -->
+  <section id="venue" class="reveal" aria-labelledby="venue-title">
+    <div class="container">
+      <h2 class="section-title" id="venue-title">Venue</h2>
+      <div class="venue-grid">
+        <div class="venue-info">
+          <h3>Rajalakshmi Institute of Technology</h3>
+          <p>
+            Kuthambakkam, Chennai - 600124. Featuring high-tech computer clusters, state-of-the-art makerspaces, and advanced instrumentation units.
+          </p>
+          <div class="hud-details">
+            <div class="hud-panel">
+              <div class="hud-title">Facility</div>
+              <div class="hud-value">Auditorium</div>
+            </div>
+            <div class="hud-panel">
+              <div class="hud-title">Connectivity</div>
+              <div class="hud-value">High Speed WiFi</div>
+            </div>
+          </div>
+        </div>
+        <!-- Futuristic Radar Scan Interface -->
+        <div class="radar-container" aria-hidden="true">
+          <div class="radar-scan">
+            <div class="radar-ping"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="reveal" aria-labelledby="faq-title">
+    <div class="container">
+      <h2 class="section-title" id="faq-title">Frequently Asked Questions</h2>
+      <div class="faq-container">
+        <div class="faq-card">
+          <div class="faq-header" role="button" tabindex="0" aria-expanded="false">
+            <span class="faq-question">Who is eligible to participate?</span>
+            <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
+          </div>
+          <div class="faq-content" role="region">
+            <div class="faq-answer">
+              All undergraduate engineering and technology students (B.E / B.Tech / M.E / M.Tech) from all institutions are eligible to participate.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-card">
+          <div class="faq-header" role="button" tabindex="0" aria-expanded="false">
+            <span class="faq-question">What is the team configuration?</span>
+            <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
+          </div>
+          <div class="faq-content" role="region">
+            <div class="faq-answer">
+              For the Robotics track: 4 to 5 members per team. For the Chip Design track: 4 members per team.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-card">
+          <div class="faq-header" role="button" tabindex="0" aria-expanded="false">
+            <span class="faq-question">Is hardware/software provided?</span>
+            <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
+          </div>
+          <div class="faq-content" role="region">
+            <div class="faq-answer">
+             Teams must carry their own components and all other required items.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-card">
+          <div class="faq-header" role="button" tabindex="0" aria-expanded="false">
+            <span class="faq-question">Will accommodation be provided?</span>
+            <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
+          </div>
+          <div class="faq-content" role="region">
+            <div class="faq-answer">
+              Yes, resting zones, facilities for grooming, and meals (only night) will be provided to all registered participants within the campus throughout the 24 hours.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-logo">
+        <i class="fa-solid fa-microchip" style="color: var(--accent-cyan);" aria-hidden="true"></i> ROBO<span>CHIPX '26</span>
+      </div>
+      <div class="footer-socials">
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/robochipx?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/company/robochipxhacks/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+      </div>
+      <p class="footer-copy">© 2026 ROBOCHIPX committee. Rajalakshmi Institute of Technology. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
