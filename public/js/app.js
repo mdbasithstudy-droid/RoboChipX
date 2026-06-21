@@ -290,6 +290,59 @@ async function initRegistration() {
   });
 }
 
+// Fit hero title to one line on any screen size — measures the actual
+// rendered width and shrinks font-size until it fits, so "ROBOCHIPX 2026"
+// (or any hero-title text) never wraps or breaks mid-word on any device.
+function fitHeroTitle() {
+  const titles = document.querySelectorAll('.hero-title');
+  if (!titles.length) return;
+
+  titles.forEach(el => {
+    const parent = el.parentElement;
+    if (!parent) return;
+
+    // Capture whatever font-size the page originally set (an inline style
+    // like registration.html's clamp(), or "" to defer to the CSS class)
+    // exactly once, so later passes can restore it before re-measuring.
+    if (el.dataset.origFontSizeCaptured !== '1') {
+      el.dataset.origFontSize = el.style.fontSize || '';
+      el.dataset.origFontSizeCaptured = '1';
+    }
+
+    // Restore the natural size first — this lets clamp() recompute fresh
+    // for the current viewport before we decide whether to shrink further.
+    el.style.fontSize = el.dataset.origFontSize;
+
+    const parentStyle = window.getComputedStyle(parent);
+    const availableWidth = parent.clientWidth
+      - parseFloat(parentStyle.paddingLeft || 0)
+      - parseFloat(parentStyle.paddingRight || 0);
+
+    let fontSize = parseFloat(window.getComputedStyle(el).fontSize);
+    const minFontSize = 13; // px floor so text never becomes unreadable
+    let guard = 200; // safety cap on iterations
+
+    while (el.scrollWidth > availableWidth && fontSize > minFontSize && guard > 0) {
+      fontSize -= 1;
+      el.style.fontSize = fontSize + 'px';
+      guard--;
+    }
+  });
+}
+
+function initHeroTitleFit() {
+  fitHeroTitle();
+  let resizeTimeout = null;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(fitHeroTitle, 120);
+  });
+  // Re-check after web fonts finish loading (font swap can change widths)
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(fitHeroTitle).catch(() => {});
+  }
+}
+
 // Bootstrap
 document.addEventListener('DOMContentLoaded', () => {
   new Starfield();
@@ -298,4 +351,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initAccordions();
   initMobileNav();
   initRegistration();
+  initHeroTitleFit();
 });
