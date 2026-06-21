@@ -1382,3 +1382,75 @@ footer {
     gap: 0.4rem;
   }
 }
+
+
+/* Mobile Responsive Fixes */
+@media (max-width: 768px) {
+
+  .container {
+      padding: 0 1rem;
+  }
+
+  .mobile-nav-toggle {
+      display: block;
+  }
+
+  .nav-links {
+      display: none;
+  }
+
+  .navbar .btn-secondary {
+      display: none;
+  }
+
+  .hero-title {
+      font-size: 2.3rem !important;
+      letter-spacing: 1px;
+  }
+
+  .hero-tagline {
+      font-size: 1rem;
+  }
+
+  .hero-meta,
+  .hero-actions {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .about-grid,
+  .tracks-grid,
+  .timeline-schedule-grid,
+  .venue-grid,
+  .payment-layout {
+      grid-template-columns: 1fr;
+  }
+
+  .prize-distribution {
+      grid-template-columns: 1fr;
+  }
+
+  .countdown-container {
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+
+  .countdown-box {
+      min-width: 70px;
+      padding: 0.8rem;
+  }
+
+  .countdown-num {
+      font-size: 1.4rem;
+  }
+
+  .section-title {
+      font-size: 1.8rem;
+  }
+
+  .btn {
+      font-size: 0.75rem;
+      padding: 0.75rem 1rem;
+      letter-spacing: 0.5px;
+  }
+}
