@@ -1485,3 +1485,21 @@ footer {
     padding: 0.6rem;
   }
 }
+
+/* ── Tablet nav fix (iPad / Android tablets, ~769px–1024px) ─────────────
+   The full desktop nav (logo + 6 links + "Back to Home") doesn't fit in
+   one row on tablet-width screens, which were previously falling between
+   the 768px mobile breakpoint and the 1300px desktop nav. Use the same
+   hamburger menu here that phones already use, so the navbar never
+   overflows or gets clipped on any tablet, in portrait or landscape. */
+@media (max-width: 1024px) {
+  .nav-links {
+    display: none;
+  }
+  .mobile-nav-toggle {
+    display: block;
+  }
+  .navbar .btn-secondary {
+    display: none;
+  }
+}
