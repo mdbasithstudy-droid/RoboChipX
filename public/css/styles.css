@@ -118,7 +118,7 @@ h1, h2, h3, h4, h5, h6, .hero-title, .logo, .section-title {
 
 .section-title {
   font-family: var(--font-tech);
-  font-size: clamp(1.5rem, 5.5vw, 2.5rem);
+  font-size: clamp(1.5rem, 5.5vmin, 2.5rem);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -207,7 +207,7 @@ header {
 
 .logo {
   font-family: var(--font-tech);
-  font-size: clamp(1.05rem, 4vw, 1.6rem);
+  font-size: clamp(1.05rem, 4vmin, 1.6rem);
   font-weight: 900;
   letter-spacing: 1px;
   color: var(--text-primary);
@@ -386,11 +386,13 @@ header {
 /* Hero Section */
 .hero {
   min-height: 100vh;
+  min-height: 100dvh; /* accounts for mobile browser address bar so height is consistent across devices */
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   padding-top: 100px;
+  padding-bottom: 2rem;
   overflow: hidden;
 }
 
@@ -412,26 +414,31 @@ header {
 
 .hero-title {
   font-family: var(--font-tech);
-  font-size: clamp(2.1rem, 9vw, 5.5rem);
+  /* Sized against the smaller of width/height so rotating a device to
+     landscape (wide but short) no longer inflates the text past what
+     fits on screen. */
+  font-size: clamp(2.1rem, 8vmin, 5.5rem);
   font-weight: 900;
   line-height: 1.05;
   text-transform: uppercase;
   margin-bottom: 0.5rem;
-  letter-spacing: clamp(0.5px, 0.4vw, 4px);
+  letter-spacing: clamp(0.5px, 0.3vmin, 4px);
   background: linear-gradient(to right, #ffffff, #8be6ff, var(--accent-purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.15));
-  white-space: nowrap;
-  overflow-wrap: normal;
-  word-break: keep-all;
-  display: inline-block;
+  /* Wrap as a safety net instead of forcing one line — nowrap is what
+     was pushing the title past the edge of the screen on some devices. */
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+  display: block;
   max-width: 100%;
 }
 
 .hero-tagline {
   font-family: var(--font-tech);
-  font-size: clamp(1rem, 3.6vw, 1.6rem);
+  font-size: clamp(1rem, 3.6vmin, 1.6rem);
   font-weight: 500;
   color: var(--text-primary);
   margin-bottom: 2rem;
@@ -439,7 +446,7 @@ header {
 }
 
 .hero-desc {
-  font-size: clamp(0.95rem, 2.6vw, 1.1rem);
+  font-size: clamp(0.95rem, 2.6vmin, 1.1rem);
   color: var(--text-secondary);
   max-width: 600px;
   margin: 0 auto 3rem;
@@ -509,7 +516,7 @@ header {
 
 .countdown-num {
   font-family: var(--font-tech);
-  font-size: clamp(1.4rem, 5vw, 2.2rem);
+  font-size: clamp(1.4rem, 5vmin, 2.2rem);
   font-weight: 700;
   color: var(--accent-cyan);
   text-shadow: var(--neon-glow-cyan);
@@ -645,13 +652,13 @@ section {
 
 .track-title {
   font-family: var(--font-tech);
-  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  font-size: clamp(1.25rem, 1.05rem + 0.5vmin, 1.8rem);
   color: var(--accent-cyan);
   text-shadow: var(--neon-glow-cyan);
 }
 
 .track-icon {
-  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-size: clamp(1.6rem, 1.4rem + 0.4vmin, 2.2rem);
   color: var(--accent-cyan);
 }
 
@@ -704,7 +711,7 @@ section {
 
 .prize-amount {
   font-family: var(--font-tech);
-  font-size: clamp(2.2rem, 10vw, 4rem);
+  font-size: clamp(2.2rem, 10vmin, 4rem);
   font-weight: 900;
   color: #fff;
   text-shadow: 0 0 20px rgba(189, 0, 255, 0.5);
@@ -1283,12 +1290,6 @@ input[type="file"].form-control::-webkit-file-upload-button {
   justify-content: center;
 }
 
-@media (max-width: 768px) {
-  .payment-layout {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* Footer */
 footer {
   background: var(--bg-darker);
@@ -1339,11 +1340,29 @@ footer {
   transform: translateY(0);
 }
 
-/* Responsive Design */
-@media (max-width: 992px) {
-  .hero-title {
-    font-size: 4rem;
+/* ============================================================
+   Responsive Design
+   Ordered from largest breakpoint to smallest. Each block only
+   contains rules unique to that range — duplicates that used to
+   exist across separate blocks have been merged here.
+   ============================================================ */
+
+/* Tablets and below (~1024px): nav doesn't fit in one row, so use
+   the same hamburger menu phones use. Width-based, applies in both
+   portrait and landscape on tablets. */
+@media (max-width: 1024px) {
+  .nav-links {
+    display: none;
   }
+  .mobile-nav-toggle {
+    display: block;
+  }
+  .navbar .btn-secondary {
+    display: none;
+  }
+}
+
+@media (max-width: 992px) {
   .about-grid, .timeline-schedule-grid, .venue-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -1361,22 +1380,40 @@ footer {
   header {
     padding: 0;
   }
-  .nav-links {
-    display: none;
+
+  .container {
+    padding: 0 1rem;
   }
-  .mobile-nav-toggle {
-    display: block;
-  }
-  .hero-meta {
+
+  .hero-meta,
+  .hero-actions {
     flex-direction: column;
+    align-items: center;
     gap: 1.5rem;
   }
+
+  .about-grid,
+  .tracks-grid,
+  .timeline-schedule-grid,
+  .venue-grid,
+  .payment-layout,
   .prize-distribution {
     grid-template-columns: 1fr;
   }
+
+  .countdown-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn {
+    font-size: 0.75rem;
+    padding: 0.75rem 1rem;
+    letter-spacing: 0.5px;
+  }
 }
 
-/* ── Registration section mobile ────────────────────────────────────────── */
+/* Registration section mobile */
 @media (max-width: 600px) {
   .registration-container .glass-panel {
     padding: 1.8rem 1.2rem;
@@ -1391,57 +1428,7 @@ footer {
   }
 }
 
-
-/* Mobile Responsive Fixes */
-@media (max-width: 768px) {
-
-  .container {
-      padding: 0 1rem;
-  }
-
-  .mobile-nav-toggle {
-      display: block;
-  }
-
-  .nav-links {
-      display: none;
-  }
-
-  .navbar .btn-secondary {
-      display: none;
-  }
-
-  .hero-meta,
-  .hero-actions {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  .about-grid,
-  .tracks-grid,
-  .timeline-schedule-grid,
-  .venue-grid,
-  .payment-layout {
-      grid-template-columns: 1fr;
-  }
-
-  .prize-distribution {
-      grid-template-columns: 1fr;
-  }
-
-  .countdown-container {
-      flex-wrap: wrap;
-      justify-content: center;
-  }
-
-  .btn {
-      font-size: 0.75rem;
-      padding: 0.75rem 1rem;
-      letter-spacing: 0.5px;
-  }
-}
-
-/* ── Extra-small phones (≤480px) ─────────────────────────────────────── */
+/* Extra-small phones (≤480px) */
 @media (max-width: 480px) {
   .hero-subtitle {
     font-size: 0.85rem;
@@ -1471,7 +1458,7 @@ footer {
   }
 }
 
-/* ── Very narrow phones (≤360px) ─────────────────────────────────────── */
+/* Very narrow phones (≤360px) */
 @media (max-width: 360px) {
   .logo {
     letter-spacing: 0.5px;
@@ -1491,20 +1478,22 @@ footer {
   }
 }
 
-/* ── Tablet nav fix (iPad / Android tablets, ~769px–1024px) ─────────────
-   The full desktop nav (logo + 6 links + "Back to Home") doesn't fit in
-   one row on tablet-width screens, which were previously falling between
-   the 768px mobile breakpoint and the 1300px desktop nav. Use the same
-   hamburger menu here that phones already use, so the navbar never
-   overflows or gets clipped on any tablet, in portrait or landscape. */
-@media (max-width: 1024px) {
-  .nav-links {
-    display: none;
+/* Short screens in landscape (phones rotated sideways). Height-based
+   rather than width-based, since the problem here is limited vertical
+   space, not narrow width — this is what keeps the hero section from
+   feeling oversized or cut off when a phone is rotated. 100vh/dvh is
+   often taller than the actual usable space here, so switch to a
+   comfortable min-height instead of forcing full-screen. */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    min-height: auto;
+    padding-top: 90px;
   }
-  .mobile-nav-toggle {
-    display: block;
+  .hero-actions,
+  .hero-meta {
+    flex-direction: row;
   }
-  .navbar .btn-secondary {
-    display: none;
+  .countdown-container {
+    margin-bottom: 1rem;
   }
 }
