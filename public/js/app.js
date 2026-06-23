@@ -183,113 +183,6 @@ function initMobileNav() {
   });
 }
 
-// Email validator — requires local@domain.tld, supports multi-level domains
-// (e.g. user@gmail.com, user@college.edu.in, user@company.co.in)
-function isValidEmail(email) {
-  return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/.test(email.trim());
-}
-
-// Show / clear inline form error
-function showFormError(msg) {
-  const el = document.getElementById('form-error');
-  if (!el) return;
-  el.textContent = msg;
-  el.style.display = 'block';
-  el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
-function clearFormError() {
-  const el = document.getElementById('form-error');
-  if (el) el.style.display = 'none';
-}
-
-// Registration — validate → deduplicate → Firestore → Sheets → redirect
-async function initRegistration() {
-  const form      = document.getElementById('registration-form');
-  const submitBtn = document.getElementById('submit-btn');
-  if (!form) return;
-
-  const { db } = await import('./firebase-config.js');
-  const { collection, addDoc, getDocs, query, where, serverTimestamp } =
-    await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    clearFormError();
-
-    const leaderEmail = document.getElementById('leader-email').value.trim();
-    const mobile      = document.getElementById('mobile-number').value.trim();
-
-    // Client-side validation
-    if (!isValidEmail(leaderEmail)) {
-      showFormError('Please enter a valid email address (e.g. name@yourdomain.com).'); return;
-    }
-    if (!/^[6-9][0-9]{9}$/.test(mobile)) {
-      showFormError('Please enter a valid 10-digit Indian mobile number.'); return;
-    }
-
-    submitBtn.disabled   = true;
-    submitBtn.innerHTML  = '<i class="fa-solid fa-spinner fa-spin"></i>&nbsp; Submitting…';
-
-    try {
-      // Duplicate email check
-      const emailSnap = await getDocs(query(collection(db, 'submissions'), where('leaderEmail', '==', leaderEmail)));
-      if (!emailSnap.empty) {
-        showFormError('This email address has already been used for a registration.');
-        submitBtn.disabled  = false;
-        submitBtn.innerHTML = '<i class="fa-solid fa-arrow-right"></i>&nbsp; Submit &amp; Continue to Payment';
-        return;
-      }
-
-      // Duplicate mobile check
-      const mobSnap = await getDocs(query(collection(db, 'submissions'), where('mobile', '==', mobile)));
-      if (!mobSnap.empty) {
-        showFormError('This mobile number has already been used for a registration.');
-        submitBtn.disabled  = false;
-        submitBtn.innerHTML = '<i class="fa-solid fa-arrow-right"></i>&nbsp; Submit &amp; Continue to Payment';
-        return;
-      }
-
-      // Save to Firestore
-      await addDoc(collection(db, 'submissions'), {
-        leaderEmail,
-        mobile,
-        submittedAt: serverTimestamp()
-      });
-
-      // Sync to Google Sheets — awaited so the request completes before redirect.
-      // Apps Script uses no-cors, so the response is opaque; errors are caught
-      // independently and never block the redirect or surface to the user.
-      try {
-        await fetch(
-          'https://script.google.com/macros/s/AKfycbwkGBYPc3lyFQiCHWwkX3uwR9q1IHaRJ_h4piu-hzDi_aot8PrVDiRiFZPCQJsxsUD2Lw/exec',
-          {
-            method:  'POST',
-            mode:    'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body:    JSON.stringify({ leaderEmail, mobile, submittedAt: new Date().toISOString() })
-          }
-        );
-      } catch (sheetErr) {
-        // Firestore record is the source of truth — Sheets failure is non-fatal.
-        console.warn('Google Sheets sync failed (Firestore record is safe):', sheetErr);
-      }
-
-      // 2-second buffer: gives the Apps Script server time to process the
-      // request (sheet write + confirmation email) before the page unloads.
-      await new Promise(resolve => setTimeout(resolve, 2000));
-
-      // Redirect to payment page
-      window.location.href = 'payment.html';
-
-    } catch (err) {
-      console.error(err);
-      showFormError('Submission failed. Please check your connection and try again.');
-      submitBtn.disabled  = false;
-      submitBtn.innerHTML = '<i class="fa-solid fa-arrow-right"></i>&nbsp; Submit &amp; Continue to Payment';
-    }
-  });
-}
-
 // Fit hero title to one line on any screen size — measures the actual
 // rendered width and shrinks font-size until it fits, so "ROBOCHIPX 2026"
 // (or any hero-title text) never wraps or breaks mid-word on any device.
@@ -350,6 +243,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initAccordions();
   initMobileNav();
-  initRegistration();
   initHeroTitleFit();
 });
