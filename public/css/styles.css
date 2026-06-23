@@ -721,39 +721,15 @@ section {
   -webkit-text-fill-color: transparent;
 }
 
-.prize-distribution {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.prize-dist-card {
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 12px;
-  padding: 1.5rem 1rem;
-}
-
-.prize-rank {
-  font-family: var(--font-tech);
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  color: var(--text-secondary);
-  margin-bottom: 0.5rem;
-}
-
-.prize-val {
-  font-family: var(--font-tech);
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--accent-cyan);
-}
-
 /* Timeline */
 .timeline-centered {
   max-width: 600px;
   margin: 0 auto;
+}
+
+.timeline-centered .timeline {
+  display: inline-block;
+  width: 100%;
 }
 
 .timeline {
@@ -1413,8 +1389,7 @@ footer {
   .tracks-grid,
   .timeline-schedule-grid,
   .venue-grid,
-  .payment-layout,
-  .prize-distribution {
+  .payment-layout {
     grid-template-columns: 1fr;
   }
 
