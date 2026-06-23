@@ -1,20 +1,11 @@
 {
+  "outputDirectory": "public",
   "rewrites": [
-    { "source": "/", "destination": "/public/index.html" },
-    { "source": "/registration", "destination": "/public/registration.html" },
-    { "source": "/payment", "destination": "/public/payment.html" },
-    { "source": "/rules/robotics", "destination": "/public/rules/robotics.html" },
-    { "source": "/rules/chip-design", "destination": "/public/rules/chip-design.html" },
-    { "source": "/rules/ai", "destination": "/public/rules/ai.html" }
-  ],
-  "headers": [
-    {
-      "source": "/src/js/(.*)\\.js",
-      "headers": [{ "key": "Content-Type", "value": "application/javascript" }]
-    },
-    {
-      "source": "/src/css/(.*)\\.css",
-      "headers": [{ "key": "Content-Type", "value": "text/css" }]
-    }
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/registration", "destination": "/registration.html" },
+    { "source": "/payment", "destination": "/payment.html" },
+    { "source": "/rules/robotics", "destination": "/rules/robotics.html" },
+    { "source": "/rules/chip-design", "destination": "/rules/chip-design.html" },
+    { "source": "/rules/ai", "destination": "/rules/ai.html" }
   ]
 }
