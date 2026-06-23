@@ -1489,3 +1489,63 @@ footer {
     margin-bottom: 1rem;
   }
 }
+
+/* Problem Statements Dropdown */
+.ps-dropdown-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.ps-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 180px;
+  background: rgba(2, 4, 10, 0.95);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 200;
+  box-shadow: 0 8px 24px rgba(0, 240, 255, 0.12);
+}
+
+.ps-dropdown.open {
+  display: block;
+}
+
+.ps-dropdown a {
+  display: block;
+  padding: 0.75rem 1.2rem;
+  color: var(--accent-cyan);
+  font-family: var(--font-tech);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 0.2s;
+}
+
+.ps-dropdown a:not(:last-child) {
+  border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+}
+
+.ps-dropdown a:hover {
+  background: rgba(0, 240, 255, 0.1);
+}
+
+@media (max-width: 480px) {
+  .ps-dropdown-wrap {
+    width: 100%;
+  }
+  .ps-dropdown-wrap .btn {
+    width: 100%;
+  }
+  .ps-dropdown {
+    left: 0;
+    right: 0;
+    transform: none;
+    min-width: 0;
+  }
+}
