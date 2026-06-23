@@ -1633,3 +1633,23 @@ footer {
   color: var(--text-secondary);
   line-height: 1.6;
 }
+
+/* 3-card highlights grid — centered single row on desktop */
+.highlights-grid-3 {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.highlights-grid-3 .highlight-card {
+  flex: 1 1 260px;
+  max-width: 340px;
+}
+
+@media (max-width: 768px) {
+  .highlights-grid-3 .highlight-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
