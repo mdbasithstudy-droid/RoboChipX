@@ -68,6 +68,13 @@
       <div class="hero-actions">
         <a href="registration.html" class="btn btn-primary">Register Now</a>
         <a href="#tracks" class="btn btn-secondary">Explore Tracks</a>
+        <div class="ps-dropdown-wrap">
+          <button class="btn btn-secondary" id="ps-btn" aria-haspopup="true" aria-expanded="false">Problem Statements <i class="fa-solid fa-chevron-down" style="margin-left:.4em;font-size:.8em;"></i></button>
+          <div class="ps-dropdown" id="ps-dropdown" role="menu">
+            <a href="https://drive.google.com/drive/folders/1tSqGFi7_nGk8FoYNyf7YWejTcvquZJex?usp=sharing" target="_blank" rel="noopener noreferrer" role="menuitem">Robotics</a>
+            <a href="https://drive.google.com/drive/folders/1A_5dEMQkCWYK55L6pi4R8gVXef6XEg_-?usp=sharing" target="_blank" rel="noopener noreferrer" role="menuitem">Chip Design</a>
+          </div>
+        </div>
       </div>
 
       <!-- Countdown -->
@@ -268,13 +275,6 @@
             <div class="timeline-desc">Teams secure spots by registering online.</div>
           </div>
           <div class="timeline-item">
-            <div class="timeline-date">July 3, 2026</div>
-            <div class="timeline-title">Problem Statements Release</div>
-            <div class="timeline-desc">Problem Statements for Robotics and ChipDesign tracks will only be released.
-              For Ai track it will be released on the day of hackathon.
-            </div>
-          </div>
-          <div class="timeline-item">
             <div class="timeline-date">July 9, 2026</div>
             <div class="timeline-title">On-Spot Registrations</div>
             <div class="timeline-desc">Participants can also register on the spot.</div>
@@ -406,5 +406,20 @@
   </footer>
 
   <script type="module" src="/js/app.js"></script>
+  <script>
+    (function(){
+      var btn = document.getElementById('ps-btn');
+      var dd = document.getElementById('ps-dropdown');
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var open = dd.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open);
+      });
+      document.addEventListener('click', function(){
+        dd.classList.remove('open');
+        btn.setAttribute('aria-expanded', false);
+      });
+    })();
+  </script>
 </body>
 </html>
