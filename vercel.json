@@ -2,7 +2,10 @@
   "rewrites": [
     { "source": "/", "destination": "/public/index.html" },
     { "source": "/registration", "destination": "/public/registration.html" },
-    { "source": "/payment", "destination": "/public/payment.html" }
+    { "source": "/payment", "destination": "/public/payment.html" },
+    { "source": "/rules/robotics", "destination": "/public/rules/robotics.html" },
+    { "source": "/rules/chip-design", "destination": "/public/rules/chip-design.html" },
+    { "source": "/rules/ai", "destination": "/public/rules/ai.html" }
   ],
   "headers": [
     {
