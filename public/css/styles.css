@@ -1549,3 +1549,87 @@ footer {
     min-width: 0;
   }
 }
+
+/* RIT Transport Button */
+.venue-transport {
+  margin-top: 1rem;
+}
+
+.btn-transport {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.55rem 1.2rem;
+  font-family: var(--font-tech);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--accent-cyan);
+  background: transparent;
+  border: 1px solid var(--accent-cyan);
+  border-radius: 8px;
+  box-shadow: inset 0 0 5px rgba(0, 240, 255, 0.08);
+  transition: background 0.25s, box-shadow 0.25s, transform 0.25s;
+  cursor: pointer;
+}
+
+.btn-transport:hover {
+  background: rgba(0, 240, 255, 0.1);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.35);
+  transform: scale(1.04);
+}
+
+.venue-transport-note {
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Venue info badges (food, etc.) */
+.venue-info-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.venue-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.35rem 0.85rem;
+  background: rgba(0, 240, 255, 0.05);
+  border: 1px solid rgba(0, 240, 255, 0.15);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  width: fit-content;
+}
+
+/* Disabled item in Problem Statements dropdown */
+.ps-dropdown-disabled {
+  display: block;
+  padding: 0.75rem 1.2rem;
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  color: rgba(143, 156, 174, 0.5);
+  border-top: 1px solid rgba(0, 240, 255, 0.1);
+  cursor: default;
+  line-height: 1.5;
+}
+
+/* AI rules page — info notice */
+.rules-info-notice {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  background: rgba(0, 240, 255, 0.04);
+  border-left: 3px solid var(--accent-cyan);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
