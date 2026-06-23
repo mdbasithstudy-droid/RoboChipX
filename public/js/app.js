@@ -343,6 +343,48 @@ function initHeroTitleFit() {
   }
 }
 
+// Rules Track Selection
+function initRulesSelection() {
+  const trackCards = document.querySelectorAll('.track-selection-card');
+  const rulesPanel = document.querySelectorAll('.rules-panel');
+  if (!trackCards.length || !rulesPanel.length) return;
+
+  trackCards.forEach(card => {
+    const selectTrack = () => {
+      const trackName = card.getAttribute('data-track');
+      if (!trackName) return;
+
+      // Update active card
+      trackCards.forEach(c => {
+        c.classList.remove('active');
+        c.setAttribute('aria-pressed', 'false');
+      });
+      card.classList.add('active');
+      card.setAttribute('aria-pressed', 'true');
+
+      // Update active rules panel with smooth transition
+      rulesPanel.forEach(panel => {
+        panel.classList.remove('active');
+      });
+
+      const activePanel = document.getElementById(`rules-${trackName}`);
+      if (activePanel) {
+        activePanel.classList.add('active');
+      }
+    };
+
+    card.addEventListener('click', selectTrack);
+
+    // Keyboard accessibility: allow selection with Enter or Space key
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        selectTrack();
+      }
+    });
+  });
+}
+
 // Bootstrap
 document.addEventListener('DOMContentLoaded', () => {
   new Starfield();
@@ -352,4 +394,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initRegistration();
   initHeroTitleFit();
+  initRulesSelection();
 });
