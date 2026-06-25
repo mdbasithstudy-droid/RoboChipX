@@ -1653,3 +1653,95 @@ footer {
     max-width: 100%;
   }
 }
+
+/* Dropdown group label */
+.ps-group-label {
+  padding: 0.45rem 1.2rem 0.3rem;
+  font-family: var(--font-tech);
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  opacity: 0.7;
+}
+
+.ps-group-label--border {
+  border-top: 1px solid rgba(0, 240, 255, 0.1);
+  margin-top: 0.25rem;
+  padding-top: 0.6rem;
+}
+
+/* Sub-items inside grouped dropdown */
+.ps-sub-item {
+  display: block;
+  padding: 0.6rem 1.2rem 0.6rem 1.8rem;
+  color: var(--text-primary);
+  font-family: var(--font-tech);
+  font-size: 0.78rem;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+a.ps-sub-item:hover {
+  background: rgba(0, 240, 255, 0.1);
+}
+
+/* Open Innovation tooltip item */
+.ps-oi-item {
+  color: var(--text-secondary);
+  position: relative;
+  user-select: none;
+}
+
+.ps-oi-item:hover {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-primary);
+}
+
+.ps-oi-icon {
+  font-size: 0.75em;
+  margin-left: 0.3em;
+  opacity: 0.6;
+}
+
+.ps-oi-item::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 8px;
+  background: rgba(2, 4, 10, 0.97);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  border-radius: 8px;
+  padding: 0.55rem 0.85rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  white-space: normal;
+  width: 200px;
+  line-height: 1.5;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s;
+  z-index: 300;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+}
+
+.ps-oi-item:hover::after,
+.ps-oi-item:focus::after {
+  opacity: 1;
+}
+
+/* On small screens, show tooltip below instead of to the right */
+@media (max-width: 600px) {
+  .ps-oi-item::after {
+    left: 0;
+    top: 100%;
+    transform: none;
+    margin-left: 0;
+    margin-top: 4px;
+    width: 100%;
+  }
+}
