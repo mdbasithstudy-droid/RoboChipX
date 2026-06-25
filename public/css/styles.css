@@ -393,7 +393,7 @@ header {
   position: relative;
   padding-top: 100px;
   padding-bottom: 2rem;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .hero-content {
@@ -1507,7 +1507,7 @@ footer {
   border: 1px solid rgba(0, 240, 255, 0.25);
   border-radius: 10px;
   overflow: hidden;
-  z-index: 200;
+  z-index: 9999;
   box-shadow: 0 8px 24px rgba(0, 240, 255, 0.12);
 }
 
@@ -1743,5 +1743,35 @@ a.ps-sub-item:hover {
     margin-left: 0;
     margin-top: 4px;
     width: 100%;
+  }
+}
+
+/* ── Scroll-fix overrides ─────────────────────────────────────
+   These rules override earlier declarations that caused the page
+   to lose scroll when the Problem Statements dropdown was open.
+   • .hero overflow changed to visible so the absolutely-positioned
+     dropdown is not clipped by the hero section.
+   • .ps-dropdown gets overflow-y:auto + max-height so it can scroll
+     internally without ever locking the page scroll.
+   • z-index raised to 9999 so it always renders on top.
+   No JS changes are needed — the existing close-on-outside-click
+   script never touches document.body.style.overflow.
+   ─────────────────────────────────────────────────────────── */
+.hero {
+  overflow: visible;
+}
+
+.ps-dropdown {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 80vh;
+  z-index: 9999;
+}
+
+@media (max-width: 480px) {
+  .ps-dropdown {
+    /* On mobile the dropdown is full-width and anchored below the
+       button — keep it within the viewport */
+    max-height: 60vh;
   }
 }
