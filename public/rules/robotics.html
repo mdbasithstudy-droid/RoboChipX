@@ -85,11 +85,13 @@
           <i class="fa-solid fa-folder-open" aria-hidden="true"></i>&nbsp; View Problem Statements
         </a>
         <a
-          href="javascript:void(0)"
-          class="btn btn-primary rules-pay-btn btn-closed-payment"
-          onclick="event.preventDefault();"
+          href="https://forms.easebuzz.in/sign-up/RAJALAKSHMIbw5w4/RobochipX_Hackathon/?inst_name=RAJALAKSHMIbw5w4&form_name=RobochipX_Hackathon&jsonData=1"
+          class="btn btn-primary rules-pay-btn"
+          target="_blank"
+          rel="noopener noreferrer"
+          id="pay-btn"
         >
-          REGISTRATION CLOSED
+          <i class="fa-solid fa-credit-card" aria-hidden="true"></i>&nbsp; Proceed to Payment
         </a>
       </div>
     </div>
@@ -111,5 +113,30 @@
   </footer>
 
   <script type="module" src="/js/app.js"></script>
+  <script type="module">
+    import { setupTimer } from '/js/deadline.js';
+    const payBtn = document.getElementById('pay-btn');
+    setupTimer((closed) => {
+      if (closed) {
+        if (payBtn) {
+          payBtn.innerText = 'REGISTRATION CLOSED';
+          payBtn.setAttribute('href', 'javascript:void(0)');
+          payBtn.classList.add('btn-closed-payment');
+          payBtn.setAttribute('onclick', 'event.preventDefault();');
+          payBtn.removeAttribute('target');
+          payBtn.removeAttribute('rel');
+        }
+      } else {
+        if (payBtn) {
+          payBtn.innerHTML = '<i class="fa-solid fa-credit-card" aria-hidden="true"></i>&nbsp; Proceed to Payment';
+          payBtn.setAttribute('href', 'https://forms.easebuzz.in/sign-up/RAJALAKSHMIbw5w4/RobochipX_Hackathon/?inst_name=RAJALAKSHMIbw5w4&form_name=RobochipX_Hackathon&jsonData=1');
+          payBtn.classList.remove('btn-closed-payment');
+          payBtn.removeAttribute('onclick');
+          payBtn.setAttribute('target', '_blank');
+          payBtn.setAttribute('rel', 'noopener noreferrer');
+        }
+      }
+    });
+  </script>
 </body>
 </html>
