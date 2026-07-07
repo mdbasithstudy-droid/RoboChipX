@@ -1775,3 +1775,31 @@ a.ps-sub-item:hover {
     max-height: 60vh;
   }
 }
+
+/* Closed registration button styles */
+.btn-closed-primary {
+  cursor: not-allowed !important;
+  opacity: 0.82 !important;
+  box-shadow: 0 2px 8px rgba(0, 240, 255, 0.15) !important;
+  transform: none !important;
+}
+.btn-closed-primary:hover {
+  transform: none !important;
+  box-shadow: 0 2px 8px rgba(0, 240, 255, 0.15) !important;
+}
+
+.btn-closed-secondary {
+  cursor: not-allowed !important;
+  opacity: 0.75 !important;
+  transform: none !important;
+}
+.btn-closed-secondary:hover {
+  transform: none !important;
+  background: transparent !important;
+}
+
+.btn-closed-payment {
+  cursor: not-allowed !important;
+  opacity: 0.82 !important;
+}
+
